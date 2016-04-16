@@ -1,4 +1,4 @@
-package de.eteranalwings.uni
+package de.eternalwings.uni
 
 import java.io.File
 
@@ -9,9 +9,9 @@ object UsefulApp extends App {
     import system.dispatcher
 
     val system = ActorSystem("UsefulReaderApp")
-    val reader = system.actorOf(Props[Reader], "reader")
-    val worker = system.actorOf(Props[Worker], "worker")
     val output = system.actorOf(Props[Collector], "collector")
+    val reader = system.actorOf(Props[Reader], "reader")
+    val worker = system.actorOf(Props[WorkerSupervisor], "worker")
 
     reader ! ReadCommand(new File("./src/main/resources/i2t.csv"))
     system.scheduler.schedule(1.second, 1.second) {

@@ -1,6 +1,5 @@
 package de.eternalwings.uni;
 
-import de.eteranalwings.uni.IPRange;
 import scala.math.BigInt;
 
 import java.io.*;

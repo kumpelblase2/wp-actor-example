@@ -1,4 +1,4 @@
-package de.eteranalwings.uni
+package de.eternalwings.uni
 
 import java.io.File
 
@@ -11,7 +11,7 @@ case class Entry(line: String)
 
 class Reader extends Actor {
 
-    val parser = context.actorSelection("../worker")
+    val parser = context.actorSelection("/user/worker")
 
     def receive = {
         case ReadCommand(file) =>
