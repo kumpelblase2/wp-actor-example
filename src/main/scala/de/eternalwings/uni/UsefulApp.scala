@@ -14,6 +14,11 @@ object UsefulApp extends App {
     val output = system.actorOf(Props[Collector], "collector")
     val reader = system.actorOf(Props[Reader], "reader")
     val worker = system.actorOf(Props[WorkerSupervisor], "worker")
+    // worker could also be defined as this:
+    /*
+    val resizer = DefaultResizer(lowerBound = 2, upperBound = 15)
+    val worker = system.actorOf(Props[Worker].withRouter(RoundRobinRouter(resizer = Some(resizer))))
+     */
 
     reader ! ReadCommand(new File("./src/main/resources/i2t.csv"))
     system.scheduler.schedule(1.second, 1.second) {
