@@ -3,7 +3,9 @@ package de.eternalwings.uni
 import java.io.File
 
 import akka.actor.{ActorSystem, Props}
+
 import scala.concurrent.duration._
+import scala.util.Random
 
 object UsefulApp extends App {
     import system.dispatcher
@@ -15,6 +17,7 @@ object UsefulApp extends App {
 
     reader ! ReadCommand(new File("./src/main/resources/i2t.csv"))
     system.scheduler.schedule(1.second, 1.second) {
+        worker ! WorkerConfig(Random.nextInt(4) + 1)
         output ! Print("Europe/.*")
     }
 }

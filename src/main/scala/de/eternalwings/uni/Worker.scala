@@ -1,10 +1,11 @@
 package de.eternalwings.uni
 
-import akka.actor.{Actor, ActorRef, Props, Terminated}
+import akka.actor.{Actor, ActorRef, PoisonPill, Props, Terminated}
 
 import scala.collection.mutable
 
 case class IPRange(start: BigInt, end: BigInt, tz: String)
+case class WorkerConfig(number: Int)
 
 class Worker extends Actor {
     val output = context.actorSelection("/user/collector")
@@ -21,13 +22,28 @@ class WorkerSupervisor extends Actor {
 
     override def preStart = {
         for(i <- 1 to 5) {
-          val worker = context.actorOf(Props[Worker])
-          context.watch(worker)
-          workers.enqueue(worker)
+          workers.enqueue(createWorker())
         }
     }
 
+    def createWorker() = {
+      println("Created new worker")
+      val worker = context.actorOf(Props[Worker])
+      context.watch(worker)
+      worker
+    }
+
     def receive = {
+      case WorkerConfig(newNumber) =>
+        println(s"set worker amount to $newNumber")
+        while(newNumber > workers.size) {
+          workers.enqueue(createWorker())
+        }
+
+        while(newNumber < workers.size) {
+          val worker = workers.dequeue()
+          worker ! PoisonPill
+        }
       case Terminated(actor) =>
         println("Oh noes, we lost one.")
       case message =>
