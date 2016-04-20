@@ -1,11 +1,35 @@
 package de.eternalwings.uni;
 
-import scala.math.BigInt;
-
 import java.io.*;
-import java.util.Stack;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Slow {
+    private static class IPRange {
+        private final long start;
+        private final long end;
+        private final String timezone;
+
+        IPRange(String timezone, long end, long start) {
+            this.timezone = timezone;
+            this.end = end;
+            this.start = start;
+        }
+
+        public long getStart() {
+            return start;
+        }
+
+        public long getEnd() {
+            return end;
+        }
+
+        public String getTimezone() {
+            return timezone;
+        }
+    }
+
+
     private static final String FILENAME = "./src/main/resources/i2t.csv";
 
     public static void main(String[] args) throws IOException {
@@ -13,7 +37,7 @@ public class Slow {
         BufferedReader reader = new BufferedReader(new FileReader(new File(FILENAME)));
 
         // Stack for data
-        Stack<IPRange> ranges = new Stack<>();
+        List<IPRange> ranges = new LinkedList<>();
         String line;
 
         // Go through all the lines of the file
@@ -21,10 +45,10 @@ public class Slow {
 
             // "Parse" them into a nicer format
             String[] split = line.split(",");
-            IPRange range = IPRange.apply(BigInt.apply(split[0]), BigInt.apply(split[1]), split[2]);
+            IPRange range = new IPRange(split[2], Long.valueOf(split[1]), Long.valueOf(split[0]));
 
             // Push them on the stack
-            ranges.push(range);
+            ranges.add(range);
         }
 
         // Do something with the data
