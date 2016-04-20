@@ -23,7 +23,6 @@ class WorkerSupervisor extends Actor {
     override def preStart = {
         // Alternative:
         //1 to 5 map { _ => createWorker() } foreach { workers.enqueue(_) }
-        
         for(i <- 1 to 5) {
           workers.enqueue(createWorker())
         }
