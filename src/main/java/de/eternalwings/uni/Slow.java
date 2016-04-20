@@ -35,10 +35,10 @@ public class Slow {
     public static void main(String[] args) throws IOException {
         // Reader for file
         BufferedReader reader = new BufferedReader(new FileReader(new File(FILENAME)));
-
-        // Stack for data
-        List<IPRange> ranges = new LinkedList<>();
         String line;
+
+        // Some data that we want to get out of all data
+        long count = 0;
 
         // Go through all the lines of the file
         while((line = reader.readLine()) != null) {
@@ -47,11 +47,11 @@ public class Slow {
             String[] split = line.split(",");
             IPRange range = new IPRange(split[2], Long.valueOf(split[1]), Long.valueOf(split[0]));
 
-            // Push them on the stack
-            ranges.add(range);
+            // Do some work with it
+            count += Math.abs(range.start - range.end);
         }
 
         // Do something with the data
-        System.out.println(ranges.size());
+        System.out.println(count);
     }
 }
