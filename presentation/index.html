@@ -122,21 +122,57 @@
                             # Aktoren
                             <aside class="notes">
                                 Model zur Programmierung
+                                Warum machen die alles das besser? Sp&auml;ter mehr
                             </aside>
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            - Etwas anders als OOP
+                            ## Stellen wir uns vor...
+                            - Wir haben zwei Personen, Jeff und Stefan <!-- .element: class="fragment" -->
+                            - Jeff will, dass Stefan ein Bug fixt <!-- .element: class="fragment" -->
+                            - Jeff sendet Stefan eine Email <!-- .element: class="fragment" -->
+                            - Sobald Stefan Zeit hat, bearbeitet er das Problem <!-- .element: class="fragment" -->
+                            - Danach Antwortet Stefan an Jeff, dass er fertig ist <!-- .element: class="fragment" -->
+                            <aside class="notes">
+                                Antwort: Review pls
+                            </aside>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Mit Aktoren:
+                            - Wir haben zwei Aktoren, Jeff und Stefan <!-- .element: class="fragment" -->
+                            - Jeff will, dass Stefan ein Wert berechnet <!-- .element: class="fragment" -->
+                            - Jeff sendet Stefan eine Nachricht <!-- .element: class="fragment" -->
+                            - Sobald Stefan wieder frei ist, holt er sicht die Nachricht <!-- .element: class="fragment" -->
+                            - Danach Antwortet Stefan an Jeff eine Nachricht mit der Lösung <!-- .element: class="fragment" -->
+                            <aside class="notes">
+                                Kommt bekannt vor? Mit Aktoren ist das genau so!
+                            </aside>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Daraus folgt:
+                            - Aktoren kann man vereinfacht als Personenen sehen, die
+                                - nur 1 Sache zur Zeit erledigen können
+                                - nur mit Email kommunizieren
+                            <aside class="notes">
+                                wie jeder normale mensch eben
+                            </aside>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            - Im Mittelpunkt steht das senden von Nachrichten
                             - Keine Arbeit direkt auf Objekten <!-- .element: class="fragment" -->
                             - Können von außen nicht verändert werden <!-- .element: class="fragment" -->
-                            - Behandeln nur eine Sache zur Zeit <!-- .element: class="fragment" -->
                             <aside class="notes">
                                 OOP: "everything is an object" -> "everything is an actor"
                                 Zwar immernoch OOP aber es fühlt sich anders an
                                 B&ouml;hm: Nachrichten senden, diesmal richtig!
                                 Keine Setter, keine Attribute, man hat nur eine referenz
-                                Tafel?!
                             </aside>
                         </script>
                     </section>
@@ -159,14 +195,20 @@
                         <script type="text/template">
                             ## Was kann ein Aktor
                             - 3 Aktionen
-                                - neue Aktoren erstellenn <!-- .element: class="fragment" -->
                                 - Nachricht senden <!-- .element: class="fragment" -->
+                                - neue Aktoren erstellen <!-- .element: class="fragment" -->
                                 - Entscheiden wie weiter gehandelt wird <!-- .element: class="fragment" -->
                             <aside class="notes">
                                 natürlich eigene daten &auml;ndern
                                 Wie wird die n&auml;chste Nachricht behandelt
                             </aside>
                         </script>
+                    </section>
+                    <section>
+                        <img src="http://cecs.wright.edu/~pmateti/Courses/7370/Lectures/Actors+Akka+Scala/fig-actor-hierarchy.png"/>
+                        <aside class="notes">
+                            Aktor System, jeder aktor wir von einem anderen &uuml;berwacht
+                        </aside>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
@@ -201,10 +243,11 @@
                     <section data-markdown>
                         <script type="text/template">
                             ```erlang
-                            handle() ->
+                            Handle = fun() ->
                               receive
                                 print ->
-                                  io:format("Hello world!")
+                                  io:format("Hello world!"),
+                                  Handle();
                                 _ ->
                                   io:format("Unknown message.")
                               end.
