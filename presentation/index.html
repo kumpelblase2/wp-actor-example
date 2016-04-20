@@ -51,7 +51,7 @@
                 <section>
                     <ul>
                         <li>Warum &uuml;berhaupt Dinge anders machen?</li>
-                        <li>Was f&uuml;r eine Lösung gibt es?</li>
+                        <li>Die Alternative</li>
                         <li>Get it running!</li>
                     </ul>
                     <aside class="notes">
@@ -84,8 +84,8 @@
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Was kann hier verbessert werden?
-
+                            ## Problem: Blocking. Lösung?
+                            Ansätze:
                             - Pro Zeile ein Thread <!-- .element: class="fragment" -->
                             - Pro Aufgabe ein Thread <!-- .element: class="fragment" -->
                             <aside class="notes">
@@ -121,10 +121,7 @@
                             Enter ...
                             # Aktoren
                             <aside class="notes">
-                                Kein theater :P
-                                Keine allheilmittel bei Concurrency
-                                -> aber kein problem mit Synchronisierung und Locks!
-                                -> Einfache Skalierung
+                                Model zur Programmierung
                             </aside>
                         </script>
                     </section>
@@ -135,6 +132,7 @@
                             - Können von außen nicht verändert werden <!-- .element: class="fragment" -->
                             - Behandeln nur eine Sache zur Zeit <!-- .element: class="fragment" -->
                             <aside class="notes">
+                                OOP: "everything is an object" -> "everything is an actor"
                                 Zwar immernoch OOP aber es fühlt sich anders an
                                 B&ouml;hm: Nachrichten senden, diesmal richtig!
                                 Keine Setter, keine Attribute, man hat nur eine referenz
@@ -146,12 +144,11 @@
                         <script type="text/template">
                             ## Anatomy of an actor
 
-                            - Url zum Referenzieren
-                            - Objekt mit State und Behavior
+                            - eigenes Objekt
+                                - State
+                                - Behavior
                             - Mailbox
-                            - opt. Thread pro Aktor
                             <aside class="notes">
-                                Thread pro Aktor macht Sinn
                                 State wird nur vom Aktor selber ge&auml;ndert
                                 -> keine Synchronisationsprobleme
                                 Kleiner Container -> separation of concerns
@@ -164,7 +161,7 @@
                             - 3 Aktionen
                                 - neue Aktoren erstellenn <!-- .element: class="fragment" -->
                                 - Nachricht senden <!-- .element: class="fragment" -->
-                                - bearbeitung der nächsten Nachricht ändern <!-- .element: class="fragment" -->
+                                - Entscheiden wie weiter gehandelt wird <!-- .element: class="fragment" -->
                             <aside class="notes">
                                 natürlich eigene daten &auml;ndern
                                 Wie wird die n&auml;chste Nachricht behandelt
@@ -227,6 +224,15 @@
                             </aside>
                         </script>
                     </section>
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Let's get on with it
+                        <aside class="notes">
+                            Let's go /o/
+                        </aside>
+                    </script>
                 </section>
 
                 <section data-markdown>

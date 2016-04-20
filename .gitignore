@@ -9,3 +9,5 @@ project/*
 clean/project/*
 !clean/project/plugins.sbt
 !clean/project/build.properties
+presentation/*
+!presentation/index.html
