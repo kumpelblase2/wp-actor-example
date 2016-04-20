@@ -21,6 +21,9 @@ class WorkerSupervisor extends Actor {
     val workers = new mutable.Queue[ActorRef]()
 
     override def preStart = {
+        // Alternative:
+        //1 to 5 map { _ => createWorker() } foreach { workers.enqueue(_) }
+        
         for(i <- 1 to 5) {
           workers.enqueue(createWorker())
         }
@@ -49,6 +52,6 @@ class WorkerSupervisor extends Actor {
       case message =>
         val free = workers.dequeue()
         free ! message
-        workers += free
+        workers.enqueue(free)
     }
 }
