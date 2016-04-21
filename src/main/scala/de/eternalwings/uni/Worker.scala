@@ -5,7 +5,7 @@ import akka.actor.{Actor, ActorRef, OneForOneStrategy, PoisonPill, Props, Termin
 
 import scala.collection.mutable
 
-case class IPRange(start: BigInt, end: BigInt, tz: String)
+case class IPRange(start: String, end: String, tz: String)
 case class WorkerConfig(number: Int)
 
 class Worker extends Actor {
@@ -13,8 +13,14 @@ class Worker extends Actor {
     def receive = {
       case Entry(line) =>
           val split = line.split(",")
-          output ! IPRange(BigInt(split(0)), BigInt(split(1)), split(2))
+          output ! IPRange(convert(BigInt(split(0))), convert(BigInt(split(1))), split(2))
       case _ =>
+    }
+
+    def convert(value: BigInt) = {
+      0.to(3).map { i =>
+        (value >> i * 8) % 256
+      }.reverse.mkString(".")
     }
 }
 

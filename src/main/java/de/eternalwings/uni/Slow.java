@@ -1,31 +1,22 @@
 package de.eternalwings.uni;
 
 import java.io.*;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Slow {
     private static class IPRange {
-        private final long start;
-        private final long end;
-        private final String timezone;
+        final String start;
+        final String end;
+        final String timezone;
 
-        IPRange(String timezone, long end, long start) {
+        IPRange(String timezone, String end, String start) {
             this.timezone = timezone;
             this.end = end;
             this.start = start;
         }
 
-        public long getStart() {
-            return start;
-        }
-
-        public long getEnd() {
-            return end;
-        }
-
-        public String getTimezone() {
-            return timezone;
+        public String getFirst() {
+            return start.split("\\.")[0];
         }
     }
 
@@ -38,20 +29,70 @@ public class Slow {
         String line;
 
         // Some data that we want to get out of all data
-        long count = 0;
+        Map<String, Integer> occurrences = new HashMap<>();
 
         // Go through all the lines of the file
         while((line = reader.readLine()) != null) {
 
             // "Parse" them into a nicer format
             String[] split = line.split(",");
-            IPRange range = new IPRange(split[2], Long.valueOf(split[1]), Long.valueOf(split[0]));
+            IPRange range = new IPRange(split[2], intToIP(Long.valueOf(split[1])), intToIP(Long.valueOf(split[0])));
 
             // Do some work with it
-            count += Math.abs(range.start - range.end);
+            String firstPart = range.getFirst();
+            occurrences.put(firstPart, occurrences.getOrDefault(firstPart, 0) + 1);
         }
 
         // Do something with the data
-        System.out.println(count);
+        System.out.println(occurrences.toString());
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    static String intToIP(long ip) {
+        List<String> parts = new ArrayList<>();
+        for(int i = 0; i < 4; i++) {
+            parts.add("" + ((ip >> i * 8) % 256));
+        }
+        Collections.reverse(parts);
+        return String.join(".", parts);
     }
 }
