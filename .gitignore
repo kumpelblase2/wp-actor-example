@@ -10,4 +10,5 @@ clean/project/*
 !clean/project/plugins.sbt
 !clean/project/build.properties
 presentation/*
+!presentation/actor.erl
 !presentation/index.html
