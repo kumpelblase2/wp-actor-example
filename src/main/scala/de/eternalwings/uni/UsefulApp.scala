@@ -5,7 +5,6 @@ import java.io.File
 import akka.actor.{ActorSystem, Props}
 
 import scala.concurrent.duration._
-import scala.util.Random
 
 object UsefulApp extends App {
     import system.dispatcher

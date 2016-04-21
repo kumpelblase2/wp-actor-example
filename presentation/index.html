@@ -45,7 +45,7 @@
                         paralellism: 2 sachen werden zur gleichen zeit ausgeführt (multi-core)
                         concurrency: 2 sachen laufen zu gleichen zeit, k&ouml;nnen aber abwechselnd pausieren
                         Wer kennt den unterschied?
-                        Noch mehr: Supervisors, Remote
+                        Noch mehr: Supervisors, Error Handling
                     </aside>
 				</section>
                 <section>
@@ -181,8 +181,8 @@
                             ## Anatomy of an actor
 
                             - eigenes Objekt
-				                - State -> Wissen
-				                - Behavior -> Fähigkeiten
+                                - State => Wissen
+                                - Behavior => Fähigkeiten
                             - Mailbox
                             <aside class="notes">
                                 Stefan hat Ahnung von dem System
@@ -193,7 +193,8 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-			                ## Weitere Eigenschaften
+                            ## Weitere Eigenschaften
+
                             - Im Mittelpunkt steht das Senden von Nachrichten
                             - Keine Arbeit direkt auf Objekten <!-- .element: class="fragment" -->
                             - Können von außen nicht verändert werden <!-- .element: class="fragment" -->
@@ -248,17 +249,50 @@
                                 Aktoren werden immer &uuml;ber eine URL Referenziert -> k&ouml;nnen auch wo anders liegen
                                 Ich kann Aktoren lokal mehrfach starten oder auslagern
                                 Scale horizontal oder vertikal
-                                &uuml;berleitung: Sprachen die das implementiert haben ...
+                            </aside>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Ein Beispiel
+                            <aside class="notes">
+                                Schlenker zu machen zum Code part
                             </aside>
                         </script>
                     </section>
                 </section>
 
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Recap - Das System
+                            - 3 Schritte
+                                - Read
+                                - Parse
+                                - Evaluate
+                            <aside class="notes">
+                                Step aside
+                            </aside>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Let's get on with it
+                            <aside class="notes">
+                                Let's go /o/
+                            </aside>
+                        </script>
+                    </section>
+                </section>
                 <section data-markdown>
                     <script type="text/template">
-                        ## Let's get on with it
+                        ## Was soll man mitnehmen?
+
+                        -
+                        - Threads sind nicht die einzige Lösung <!-- .element: class="fragment" -->
+                        - Auch mal einen Schritt zurück gehen <!-- .element: class="fragment" -->
+                        - Stefan kann gut Bugs fixen <!-- .element: class="fragment" -->
                         <aside class="notes">
-                            Let's go /o/
                         </aside>
                     </script>
                 </section>
