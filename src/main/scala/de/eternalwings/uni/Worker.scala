@@ -1,6 +1,7 @@
 package de.eternalwings.uni
 
-import akka.actor.{Actor, ActorRef, PoisonPill, Props, Terminated}
+import akka.actor.SupervisorStrategy.{Escalate, Restart, Resume}
+import akka.actor.{Actor, ActorRef, OneForOneStrategy, PoisonPill, Props, Terminated}
 
 import scala.collection.mutable
 
@@ -19,6 +20,11 @@ class Worker extends Actor {
 
 class WorkerSupervisor extends Actor {
     val workers = new mutable.Queue[ActorRef]()
+    override val supervisorStrategy = OneForOneStrategy() {
+      case _: NumberFormatException => Resume
+      case _: NullPointerException => Restart
+      case _: Exception => Escalate
+    }
 
     override def preStart = {
         // Alternative:

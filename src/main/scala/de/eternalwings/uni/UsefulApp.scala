@@ -20,9 +20,9 @@ object UsefulApp extends App {
     val worker = system.actorOf(Props[Worker].withRouter(RoundRobinRouter(resizer = Some(resizer))))
      */
 
-    reader ! ReadCommand(new File("./src/main/resources/i2t.csv"))
+    reader ! ReadCommand(new File("./src/main/resources/small.csv"))
     system.scheduler.schedule(1.second, 1.second) {
-        worker ! WorkerConfig(Random.nextInt(4) + 1)
+        //worker ! WorkerConfig(Random.nextInt(4) + 1)
         output ! Print("Europe/.*")
     }
 }
