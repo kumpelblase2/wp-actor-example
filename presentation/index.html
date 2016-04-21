@@ -253,48 +253,6 @@
                         </script>
                     </section>
                 </section>
-                <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Erlang
-                            - existiert seit 1986
-                            - Verteilt, Fehlertollerant und Hochverfügbar
-                            - besitzt Aktoren
-                            <aside class="notes">
-                                Immer noch aktive entwickelt und benutzt (im m&auml;rz letzte version)
-                                Ericsson -> Telefon-Switches
-                                tolle andere features wie hot-swapping
-                            </aside>
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ```erlang
-                            Handle = fun() ->
-                              receive
-                                print ->
-                                  io:format("Hello world!"),
-                                  Handle();
-                                _ ->
-                                  io:format("Unknown message.")
-                              end.
-
-                            Pid = spawn(fun handle/0),
-                            % => PID<0.1.0>
-                            Pid ! print,
-                            % => Hello world!
-                            Pid ! ponies.
-                            % => Unknown message.
-                            ```
-                            <aside class="notes">
-                                Syntax ist unwichtig, etwas ausgelassen
-                                Wichtig ist strucktur
-                                Methoden sind fast gleichnamig
-                                Live example?
-                            </aside>
-                        </script>
-                    </section>
-                </section>
 
                 <section data-markdown>
                     <script type="text/template">
