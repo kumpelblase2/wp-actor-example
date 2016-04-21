@@ -11,7 +11,7 @@ class Worker extends Actor {
     def convert(value: BigInt) = {
         0.to(3).map { i =>
             (value >> i * 8) % 256
-        }.reverse.reduce(_ + "." + _)
+        }.reverse.mkString(".")
     }
 }
 
