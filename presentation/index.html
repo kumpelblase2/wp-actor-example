@@ -43,7 +43,7 @@
                     <aside class="notes">
                         Concurrency oder paralellism?
                         paralellism: 2 sachen werden zur gleichen zeit ausgeführt (multi-core)
-                        concurrency: 2 sachen laufen zu gleichen zeit, können aber abwechselnd pausieren
+                        concurrency: 2 sachen laufen zu gleichen zeit, k&ouml;nnen aber abwechselnd pausieren
                         Wer kennt den unterschied?
                         Noch mehr: Supervisors, Remote
                     </aside>
@@ -96,7 +96,6 @@
                             </aside>
                         </script>
                     </section>
-
                     <section data-markdown>
                         <script type="text/template">
                             ## Warum anders machen?
@@ -114,7 +113,6 @@
                         </script>
                     </section>
                 </section>
-
                 <section>
                     <section data-markdown>
                         <script type="text/template">
@@ -141,12 +139,27 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
+                            ## Nun mit Objekten...
+                            - Wir haben zwei Objekte, Jeff und Stefan <!-- .element: class="fragment" -->
+                            - Jeff will, dass Stefan ein Bug fixt <!-- .element: class="fragment" -->
+                            - Jeff ruft Stefan an <!-- .element: class="fragment" -->
+                            - Sobald Stefan Zeit hat, nur er den Anruf an <!-- .element: class="fragment" -->
+                            - Jeff bleibt so lange dran, bis Stefan fertig ist <!-- .element: class="fragment" -->
+                            - Stefan gibt nach Abschluss die Antwort direkt <!-- .element: class="fragment" -->
+                            <aside class="notes">
+                                So sollte man es sie ja normalerweise vorstellen
+				Problem auch hier: blocking und warten
+                            </aside>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
                             ## Mit Aktoren:
                             - Wir haben zwei Aktoren, Jeff und Stefan <!-- .element: class="fragment" -->
-                            - Jeff will, dass Stefan ein Wert berechnet <!-- .element: class="fragment" -->
-                            - Jeff sendet Stefan eine Nachricht <!-- .element: class="fragment" -->
-                            - Sobald Stefan wieder frei ist, holt er sicht die Nachricht <!-- .element: class="fragment" -->
-                            - Danach Antwortet Stefan an Jeff eine Nachricht mit der Lösung <!-- .element: class="fragment" -->
+                            - Jeff will, dass Stefan einen Bug fixt <!-- .element: class="fragment" -->
+                            - Jeff sendet Stefan eine Email <!-- .element: class="fragment" -->
+                            - Sobald Stefan Zeit hat, bearbeitet er das Problem <!-- .element: class="fragment" -->
+                            - Danach Antwortet Stefan an Jeff, dass er fertig ist <!-- .element: class="fragment" -->
                             <aside class="notes">
                                 Kommt bekannt vor? Mit Aktoren ist das genau so!
                             </aside>
@@ -155,7 +168,7 @@
                     <section data-markdown>
                         <script type="text/template">
                             ## Daraus folgt:
-                            - Aktoren kann man vereinfacht als Personenen sehen, die
+                            - Aktoren kann man vereinfacht als Personen sehen, die
                                 - nur 1 Sache zur Zeit erledigen können
                                 - nur mit Email kommunizieren
                             <aside class="notes">
@@ -165,29 +178,30 @@
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            - Im Mittelpunkt steht das senden von Nachrichten
-                            - Keine Arbeit direkt auf Objekten <!-- .element: class="fragment" -->
-                            - Können von außen nicht verändert werden <!-- .element: class="fragment" -->
+                            ## Anatomy of an actor
+
+                            - eigenes Objekt
+				- State -> Wissen
+				- Behavior -> Fähigkeiten
+                            - Mailbox
                             <aside class="notes">
-                                OOP: "everything is an object" -> "everything is an actor"
-                                Zwar immernoch OOP aber es fühlt sich anders an
-                                B&ouml;hm: Nachrichten senden, diesmal richtig!
-                                Keine Setter, keine Attribute, man hat nur eine referenz
+                                Stefan hat Ahnung von dem System
+				Stefan kann code schreiben
+				Mailbox -> Email Postfach
                             </aside>
                         </script>
                     </section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Anatomy of an actor
-
-                            - eigenes Objekt
-                                - State
-                                - Behavior
-                            - Mailbox
+			    ## Weitere Eigenschaften
+                            - Im Mittelpunkt steht das Senden von Nachrichten
+                            - Keine Arbeit direkt auf Objekten <!-- .element: class="fragment" -->
+                            - Können von außen nicht verändert werden <!-- .element: class="fragment" -->
                             <aside class="notes">
-                                State wird nur vom Aktor selber ge&auml;ndert
-                                -> keine Synchronisationsprobleme
-                                Kleiner Container -> separation of concerns
+                                B&ouml;hm: Nachrichten senden, diesmal richtig!
+                                Keine Setter, keine Attribute, man hat nur eine referenz
+				Emails halten nicht auf
+				Emails gehen in ein Postfach, nicht direkt an die Person
                             </aside>
                         </script>
                     </section>
