@@ -10,7 +10,7 @@ class Collector extends Actor {
             val first = iprange.start.split("\\.")(0)
             items = items.updated(first, items.getOrElse(first, 0) + 1)
         case Print(first) =>
-            println("Amount:" + items(first))
+            println("Amount:" + items.getOrElse(first, 0))
     }
 }
 
