@@ -66,7 +66,7 @@
                             ## Beispielsystem
 
                             - Daten lesen, parsen und filtern/verarbeiten
-                            - Jedes element durchläuft jeden Schritt einmal
+                            - Jedes Element durchläuft jeden Schritt einmal
                             - Reihenfolge ist egal
                         </script>
                     </section>
@@ -101,7 +101,7 @@
                         <script type="text/template">
                             ## Warum anders machen?
 
-                            - Threading & Synchronisation ist aufwending
+                            - Threading & Synchronisation ist aufwendig
                             - Skalierung?
                             - Error Handling?
                             <aside class="notes">
@@ -129,10 +129,10 @@
                         <script type="text/template">
                             ## Stellen wir uns vor...
                             - Wir haben zwei Personen, Jeff und Stefan <!-- .element: class="fragment" -->
-                            - Jeff will, dass Stefan ein Bug fixt <!-- .element: class="fragment" -->
+                            - Jeff will, dass Stefan ein Fehler behebt <!-- .element: class="fragment" -->
                             - Jeff sendet Stefan eine Email <!-- .element: class="fragment" -->
                             - Sobald Stefan Zeit hat, bearbeitet er das Problem <!-- .element: class="fragment" -->
-                            - Danach Antwortet Stefan an Jeff, dass er fertig ist <!-- .element: class="fragment" -->
+                            - Danach antwortet Stefan an Jeff, dass er fertig ist <!-- .element: class="fragment" -->
                             <aside class="notes">
                                 Antwort: Review pls
                             </aside>
@@ -142,9 +142,9 @@
                         <script type="text/template">
                             ## Nun mit Objekten...
                             - Wir haben zwei Objekte, Jeff und Stefan <!-- .element: class="fragment" -->
-                            - Jeff will, dass Stefan ein Bug fixt <!-- .element: class="fragment" -->
+                            - Jeff will, dass Stefan ein Fehler behebt <!-- .element: class="fragment" -->
                             - Jeff ruft Stefan an <!-- .element: class="fragment" -->
-                            - Sobald Stefan Zeit hat, nur er den Anruf an <!-- .element: class="fragment" -->
+                            - Sobald Stefan Zeit hat, nimmt er den Anruf an <!-- .element: class="fragment" -->
                             - Jeff bleibt so lange dran, bis Stefan fertig ist <!-- .element: class="fragment" -->
                             - Stefan gibt nach Abschluss die Antwort direkt <!-- .element: class="fragment" -->
                             <aside class="notes">
@@ -157,10 +157,10 @@
                         <script type="text/template">
                             ## Mit Aktoren:
                             - Wir haben zwei Aktoren, Jeff und Stefan <!-- .element: class="fragment" -->
-                            - Jeff will, dass Stefan einen Bug fixt <!-- .element: class="fragment" -->
+                            - Jeff will, dass Stefan einen Fehler behebt <!-- .element: class="fragment" -->
                             - Jeff sendet Stefan eine Email <!-- .element: class="fragment" -->
                             - Sobald Stefan Zeit hat, bearbeitet er das Problem <!-- .element: class="fragment" -->
-                            - Danach Antwortet Stefan an Jeff, dass er fertig ist <!-- .element: class="fragment" -->
+                            - Danach antwortet Stefan an Jeff, dass er fertig ist <!-- .element: class="fragment" -->
                             <aside class="notes">
                                 Kommt bekannt vor? Mit Aktoren ist das genau so!
                             </aside>
@@ -170,7 +170,7 @@
                         <script type="text/template">
                             ## Daraus folgt:
                             - Aktoren kann man vereinfacht als Personen sehen, die
-                                - nur 1 Sache zur Zeit erledigen können
+                                - nur eine Sache zur Zeit erledigen können
                                 - nur mit Email kommunizieren
                             <aside class="notes">
                                 wie jeder normale mensch eben
@@ -214,7 +214,7 @@
                             - 3 Aktionen
                                 - Nachricht senden <!-- .element: class="fragment" -->
                                 - neue Aktoren erstellen <!-- .element: class="fragment" -->
-                                - Entscheiden wie weiter gehandelt wird <!-- .element: class="fragment" -->
+                                - Entscheiden, wie weiter gehandelt wird <!-- .element: class="fragment" -->
                             <aside class="notes">
                                 natürlich eigene daten &auml;ndern
                                 Wie wird die n&auml;chste Nachricht behandelt
@@ -224,7 +224,7 @@
                     <section data-markdown>
                         <script type="text/template">
                             ## System von Aktoren
-                            - Vergleichbar mit Hirarchie im Unternehmen
+                            - Vergleichbar mit Hierarchie im Unternehmen
                             - Jeder hat einen Vorgesetzten
                             -> Bis auf CEO
                             - Aufgaben können nach unten geleitet werden
@@ -244,9 +244,9 @@
                         <script type="text/template">
                             ## Das bringt ...
 
-                            - Distribution by design <!-- .element: class="fragment" -->
+                            - Distribution by Design <!-- .element: class="fragment" -->
                             - Scalability <!-- .element: class="fragment" -->
-                            - Error Handing / Supervising <!-- .element: class="fragment" -->
+                            - Error Handling / Supervising <!-- .element: class="fragment" -->
                             <aside class="notes">
                                 Aktoren werden immer &uuml;ber eine URL Referenziert -> k&ouml;nnen auch wo anders liegen
                                 Ich kann Aktoren lokal mehrfach starten oder auslagern
@@ -285,18 +285,15 @@
                             </aside>
                         </script>
                     </section>
-                    <section>
-                        <img src="http://media.riffsy.com/images/dd3e4f6d242ecad5738731da333a592c/raw"/>
-                    </section>
                 </section>
                 <section data-markdown>
                     <script type="text/template">
                         ## Was soll man mitnehmen?
 
                         - Threads sind nicht die einzige Lösung <!-- .element: class="fragment" -->
-                        - Aktoren als eine alternative <!-- .element: class="fragment" -->
-                        - Auch mal einen Schritt zurück gehen <!-- .element: class="fragment" -->
-                        - Stefan kann gut Bugs fixen <!-- .element: class="fragment" -->
+                        - Aktoren als eine Alternative <!-- .element: class="fragment" -->
+                        - Auch mal einen Schritt zurückgehen <!-- .element: class="fragment" -->
+                        - Stefan kann gut Fehler beheben <!-- .element: class="fragment" -->
                         <aside class="notes">
                             Problem von weiter weg ansehen
                         </aside>
