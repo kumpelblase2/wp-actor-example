@@ -5,14 +5,13 @@ import java.util.Map;
 
 public class Analyzer {
     private final LineParser parser;
+    private Map<String, Integer> occurrences = new HashMap<>();
 
     public Analyzer(LineParser parser) {
         this.parser = parser;
     }
 
     public void run() {
-        Map<String, Integer> occurrences = new HashMap<>();
-
         while(!parser.isDone() || parser.hasRanges()) {
             JIPRange range = this.parser.getNextRange();
             if(range == null) {
